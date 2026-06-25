@@ -8,13 +8,22 @@ os.environ.setdefault("TRANSFORMERS_NO_FLAX", "1")
 
 import numpy as np
 
-if not hasattr(np, "object"):
+if "object" not in np.__dict__:
     np.object = object  # type: ignore
-if not hasattr(np, "bool"):
+if "bool" not in np.__dict__:
     np.bool = bool  # type: ignore
 
-import torch
-from transformers import AutoTokenizer, AutoModel
+try:
+    import torch
+except ImportError:  # Optional dependency; required only for local HF transformer embeddings.
+    torch = None  # type: ignore
+
+try:
+    from transformers import AutoTokenizer, AutoModel
+except ImportError:  # Optional dependency; TF-IDF fallback remains available.
+    AutoTokenizer = None  # type: ignore
+    AutoModel = None  # type: ignore
+
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 
@@ -40,6 +49,8 @@ class HFTransformersEncoder:
         self.batch_size = int(batch_size)
         self.max_length = int(max_length)
 
+        if torch is None or AutoTokenizer is None or AutoModel is None:
+            raise ImportError("torch and transformers are required for HFTransformersEncoder.")
         local_only = os.path.isdir(self.model_path)
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_path, local_files_only=local_only, use_fast=True)
         self.model = AutoModel.from_pretrained(self.model_path, local_files_only=local_only)

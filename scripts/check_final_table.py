@@ -17,4 +17,4 @@ for _, r in df.iterrows():
     got = (r["test1_f1_text"], r["test2_f1_text"])
     if expected[ds] != got:
         raise SystemExit(f"Mismatch for {ds}: got {got}, expected {expected[ds]}")
-print("Final SDSS3.2 table check passed.")
+print("Final SDSS table check passed.")

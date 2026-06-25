@@ -1,5 +1,5 @@
 ﻿dataset,profile_id,strata,hard_ratio,mid_ratio,easy_ratio,source_summary_file,selection_basis
-DN,s10_h0p55_m0p25_e0p20,10,0.55,0.25,0.2,/mnt/data/sdss_github_release/results/archived_profile_grid/dn_sdss32_final_profile_summary_20260519_002234.csv,Final SDSS profile fixed from archived grid: 10 strata with moderate hard-aware ratio.
-DF,s10_h0p60_m0p20_e0p20,10,0.6,0.2,0.2,/mnt/data/sdss_github_release/results/archived_profile_grid/df_sdss32_final_profile_summary_20260519_041636.csv,Final SDSS profile fixed from archived grid: 10 strata with stronger hard-aware ratio.
-DPN,s8_h0p60_m0p20_e0p20,8,0.6,0.2,0.2,/mnt/data/sdss_github_release/results/archived_profile_grid/dpn_sdss32_final_profile_summary_20260519_121738.csv,Final SDSS profile fixed from archived grid: compact 8-strata profile with stronger hard-aware ratio.
-DKA,s8_h0p60_m0p20_e0p20,8,0.6,0.2,0.2,/mnt/data/sdss_github_release/results/archived_profile_grid/dka_sdss32_final_profile_summary_20260519_131725.csv,Final SDSS profile fixed from archived grid: compact 8-strata profile with stronger hard-aware ratio.
+DN,s10_h0p55_m0p25_e0p20,10,0.55,0.25,0.2,results/archived_profile_grid/dn_sdss32_final_profile_summary_20260519_002234.csv,Final SDSS profile fixed from archived grid: 10 strata with moderate hard-aware ratio.
+DF,s10_h0p60_m0p20_e0p20,10,0.6,0.2,0.2,results/archived_profile_grid/df_sdss32_final_profile_summary_20260519_041636.csv,Final SDSS profile fixed from archived grid: 10 strata with stronger hard-aware ratio.
+DPN,s8_h0p60_m0p20_e0p20,8,0.6,0.2,0.2,results/archived_profile_grid/dpn_sdss32_final_profile_summary_20260519_121738.csv,Final SDSS profile fixed from archived grid: compact 8-strata profile with stronger hard-aware ratio.
+DKA,s8_h0p60_m0p20_e0p20,8,0.6,0.2,0.2,results/archived_profile_grid/dka_sdss32_final_profile_summary_20260519_131725.csv,Final SDSS profile fixed from archived grid: compact 8-strata profile with stronger hard-aware ratio.

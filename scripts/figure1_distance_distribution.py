@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Plot clinical-category distance distribution for SDSS3.2.
+Plot clinical-category distance distribution for SDSS.
 
 功能：
 1. 读取四个病种的 *_negative_distance_detail.csv

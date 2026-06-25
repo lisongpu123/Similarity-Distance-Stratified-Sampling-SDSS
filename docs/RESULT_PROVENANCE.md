@@ -1,6 +1,6 @@
 # Result provenance
 
-The final manuscript SDSS3.2-Final table is reconstructed from archived profile-grid experiment summaries.
+The final manuscript SDSS table is reconstructed from archived profile-grid experiment summaries.
 
 Workflow:
 
@@ -21,3 +21,5 @@ Final profiles:
 | DKA | 8 | 0.60 | 0.20 | 0.20 |
 
 The reconstruction step should not be described as fresh retraining. It is an audit step for rebuilding the manuscript table from archived experimental outputs.
+
+Seed-level detail is included when the corresponding archived detail files are available; the summary CSV files are the authoritative source for the manuscript mean ± SD table.

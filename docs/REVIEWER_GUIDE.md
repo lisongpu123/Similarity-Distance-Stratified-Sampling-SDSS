@@ -11,8 +11,10 @@ python scripts/check_final_table.py
 
 Core files:
 
-- `sdsskg/similarity.py`: text embedding and cosine distance to positive centroid.
-- `sdsskg/sampling.py`: SDSS and SDSS3.2 distance-stratified hard/middle/easy sampling.
+- `sdsskg/similarity.py`: text embedding and cosine distance to the positive centroid.
+- `sdsskg/sampling.py`: distance-stratified hard/middle/easy negative sampling.
+
+Historical class and file names that contain `sdss32` are retained only for traceability to the archived experiment snapshot. The final manuscript method is reported as **SDSS**.
 
 ## 3. Run toy demo
 

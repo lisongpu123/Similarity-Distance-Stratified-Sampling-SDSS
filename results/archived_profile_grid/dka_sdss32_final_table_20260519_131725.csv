@@ -1,2 +1,0 @@
-﻿dataset,method,ranking_mode,selected_profile_id,selected_strata,selected_hard_ratio,selected_mid_ratio,selected_easy_ratio,test1_f1_mean,test1_f1_std,test1_auc_mean,test1_auc_std,test2_f1_mean,test2_f1_std,test2_auc_mean,test2_auc_std,selection_score,external_test_used_for_selection
-DKA,SDSS3.2-Final,distance_only,s8_h0p40_m0p40_e0p20,8,0.4,0.4,0.2,0.8988658467655972,0.034716378494223564,0.992682478396764,0.0032764541473957465,0.897307977508442,0.015465405320655552,0.990188383045526,0.002957352212147099,1.0326265506532075,False

@@ -1,19 +1,37 @@
-# SDSS: Similarity Distance Stratified Sampling for Diabetic Complication Prediction
+# SDSS: Similarity-Distance Stratified Sampling for Diabetic Complication Prediction
 
 This repository is a reviewer-facing release for the manuscript **"SDSS: a similarity-distance stratified negative sampling framework for diabetic complication prediction"**.
 
 The release contains two complementary parts:
 
-1. **Core SDSS code** under `sdsskg/`, including cosine-distance representation and SDSS/SDSS3.2 negative samplers.
-2. **Archived result provenance** under `results/archived_profile_grid/`, containing the profile-grid summary files used to reconstruct the manuscript SDSS3.2-Final table.
+1. **Core SDSS code** under `sdsskg/`, including cosine-distance representation and the distance-stratified negative sampling implementation.
+2. **Archived result provenance** under `results/archived_profile_grid/`, containing the profile-grid summary files used to reconstruct the final SDSS table reported in the manuscript.
 
-The manuscript method defines SDSS as a training-only framework that builds a positive centroid from training positives, computes cosine distance from training negatives to that centroid, partitions negatives into distance strata, and samples hard/middle/easy negatives according to a fixed profile; Test1 and Test2 are used only for final external evaluation, not profile selection.
+The manuscript method defines SDSS as a training-only framework that builds a positive centroid from training positives, computes cosine distance from training negatives to that centroid, partitions negatives into distance strata, and samples hard/middle/easy negatives according to a fixed profile. Test1 and Test2 are used only for final external evaluation, not for profile selection.
 
 ## Quick start: reproduce the manuscript final table
 
+Linux/macOS:
+
 ```bash
 pip install -r requirements.txt
-python scripts/build_final_sdss32_from_archived_grid.py --root results/archived_profile_grid --out results/final_sdss32_provenance
+
+python scripts/build_final_sdss32_from_archived_grid.py \
+  --root results/archived_profile_grid \
+  --out results/final_sdss32_provenance
+
+python scripts/check_final_table.py
+```
+
+Windows PowerShell:
+
+```powershell
+pip install -r requirements.txt
+
+python scripts/build_final_sdss32_from_archived_grid.py `
+  --root results/archived_profile_grid `
+  --out results/final_sdss32_provenance
+
 python scripts/check_final_table.py
 ```
 
@@ -30,14 +48,20 @@ Expected F1 table:
 
 The manuscript table is reconstructed from archived profile-grid experiment outputs. The reconstruction script **does not retrain models and does not edit scores**. It extracts the fixed final profile for each task from archived `*_sdss32_final_profile_summary_*.csv` files and writes the paper-ready mean ± SD tables.
 
-Current-code retraining is also possible if private de-identified clinical data are supplied, but current-code reruns may not exactly match the archived manuscript table if preprocessing, leakage-column exclusion, threshold selection, or model code has been updated after the archived experiments.
+Full retraining scripts are provided for experiments using private de-identified clinical data. Minor numerical differences may occur because of stochastic optimization, software versions, and local runtime environments. The archived result files are provided to reproduce the exact manuscript tables.
+
+For full retraining with local HuggingFace transformer embeddings, install the optional full environment:
+
+```bash
+pip install -r requirements-full.txt
+```
 
 ## Repository structure
 
 ```text
 sdsskg/                         # Core SDSS code
-  sampling.py                   # random, all-easy, all-hard, SDSS, SDSS3.2 samplers
-  similarity.py                 # HF/TF-IDF text encoder and cosine distance to positive centroid
+  sampling.py                   # random, all-easy, all-hard, and SDSS samplers
+  similarity.py                 # text encoder and cosine distance to positive centroid
 scripts/
   build_final_sdss32_from_archived_grid.py
   summarize_final_profile_rerun.py
@@ -47,10 +71,13 @@ configs/                        # YAML templates; paths should be adjusted for p
 results/
   archived_profile_grid/        # archived profile-grid summary/detail files
   final_sdss32_provenance/      # generated final tables and Excel provenance workbook
+  all_datasets_sdss_final_table.xlsx # compact final F1 table
   current_code_rerun/           # place current-code rerun outputs here if needed
 data/                           # raw clinical data are not included
 examples/                       # toy SDSS sampling demo with synthetic text
 ```
+
+The file names that contain `sdss32` are retained for traceability to the archived experiment snapshot. In the manuscript and result tables, the final method is reported as **SDSS**.
 
 ## Toy SDSS sampling demo
 
