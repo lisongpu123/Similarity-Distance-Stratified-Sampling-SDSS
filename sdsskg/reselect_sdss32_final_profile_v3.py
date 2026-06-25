@@ -84,7 +84,7 @@ def main():
     final[["dataset","test2_f1_text"]].to_csv(out/"final_sdss32_test2_f1.csv", index=False, encoding="utf-8-sig")
     with pd.ExcelWriter(out/"final_sdss32_provenance.xlsx", engine="openpyxl") as w:
         final.to_excel(w, index=False, sheet_name="final_table")
-    print("\n======== Final SDSS3.2-Final table from archived profile grid ========")
+    print("\n======== Final SDSS table from archived profile grid ========")
     print(final[["dataset","strata","hard_ratio","mid_ratio","easy_ratio","test1_f1_text","test2_f1_text"]].to_string(index=False))
     print(f"\nSaved to: {out}")
 

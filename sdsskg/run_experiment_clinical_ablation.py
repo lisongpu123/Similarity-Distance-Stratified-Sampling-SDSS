@@ -662,6 +662,7 @@ def main():
         kg_dim=KG_tr.shape[1],
         hidden_dim=int(cfg["model"].get("hidden_dim", 128)),
         dropout=float(cfg["model"].get("dropout", 0.2)),
+        use_kg=use_kg,
         num_classes=2,
     ).to(device)
 
