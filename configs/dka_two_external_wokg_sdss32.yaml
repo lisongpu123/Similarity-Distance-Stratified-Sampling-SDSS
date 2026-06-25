@@ -1,0 +1,49 @@
+run:
+  output_dir: outputs
+  run_name: dka_two_external_run
+data:
+  train_pos_path: 训练集/糖尿病酮症酸中毒正.xlsx
+  train_neg_path: 训练集/糖尿病酮症酸中毒负.xlsx
+  test1_path: 测试集/糖尿病酮症酸中毒.xlsx
+  test2_path: 测试集2/糖尿病酮症酸中毒.xlsx
+  label_col_raw: 标签
+  text_col: null
+  id_like_cols: []
+  text_feature_cols:
+  - 自查症状
+  - 检查症状
+sampler:
+  name: sdss32
+  neg_per_pos: 1
+  strata: 10
+  hard_ratio: 0.5
+  mid_ratio: 0.35
+  easy_ratio: 0.15
+similarity:
+  model_path: multilingual-MiniLM-L12-v2
+  batch_size: 32
+  max_length: 256
+kge:
+  entity_emb_path: artifacts/entity_emb.npy
+  entity2id_json: artifacts/entity2id.json
+  pad_token: <PAD>
+  agg: mean
+impute:
+  strategy: median
+model:
+  hidden_dim: 128
+  dropout: 0.2
+  use_kg: false
+  kg_dim_fallback: 64
+train:
+  seed: 42
+  device: cpu
+  val_ratio: 0.2
+  batch_size: 16
+  lr: 0.001
+  weight_decay: 0.0001
+  epochs: 30
+  patience: 8
+  grad_clip: 1.0
+eval:
+  threshold_strategy: f1
